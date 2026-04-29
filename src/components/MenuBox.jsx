@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logoutUser } from "../actions";
+import { logoutUser, logoutAndClear } from "../actions";
 
 function MenuBox({ loggedIn,LogoutUser }) {
   if (loggedIn) {
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => { 
   return  {
-    LogoutUser: ()=>{dispatch(logoutUser())}
+    LogoutUser: ()=>{dispatch(logoutAndClear())}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MenuBox);

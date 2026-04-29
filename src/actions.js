@@ -171,6 +171,21 @@ export const logoutUser = () =>{
   };
 };
 
+// clear cart action
+export const clearCart = () => {
+  return {
+    type: "CLEAR_CART",
+  };
+};
+
+// logout and clear cart (thunk)
+export const logoutAndClear = () => {
+  return (dispatch) => {
+    dispatch({ type: "LOGOUT_USER" });
+    dispatch({ type: "CLEAR_CART" });
+  };
+};
+
 // export function asyncAddtocart(prod) {
 //   return async (dispatch) => {
 //     (dispatch) => {
