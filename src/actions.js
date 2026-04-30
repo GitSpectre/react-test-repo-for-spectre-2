@@ -1,3 +1,5 @@
+// Action Types Reference: SET_PRODUCTS, ADD_TO_CART, REMOVE_FROM_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, CLEAR_CART, CREATE_USER, LOGIN_USER, LOGOUT_USER
+
 //product list actions
 export const getProducts = (products) => {
   return {

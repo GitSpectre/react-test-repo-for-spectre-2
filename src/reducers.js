@@ -48,7 +48,7 @@ const cartReducer = (state = { cart: [], error: null }, action) => {
             ? element
             : {
                 ...element,
-                Quantity: element.Quantity -  1,
+                Quantity: element.Quantity - 1,
               }
         ),
       };
