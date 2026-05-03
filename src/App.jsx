@@ -10,6 +10,7 @@ import LogIn from "./pages/LogIn";
 import BillingInfo from "./pages/BillingInfo";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
+import Wishlist from "./pages/Wishlist";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
             <Route path="/Welcome" element={<Home />}></Route>
             <Route path="/WelcomeBack" element={<Home />}></Route>
             <Route path="/Cart" element={<Cart />}></Route>
+            <Route path="/Wishlist" element={<Wishlist />}></Route>
             <Route path="/SignUp" element={<SignUp />}></Route>
             <Route path="/BillingInfo" element={<BillingInfo />}></Route>
             <Route path="/LogIn" element={<LogIn />}></Route>

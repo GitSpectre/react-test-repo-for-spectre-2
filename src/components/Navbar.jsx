@@ -7,14 +7,23 @@ function Navbar({ username,loggedIn, displayMenu }) {
 
   return (
     <div className="flex flex-row bg-bars w-full h-16 rounded-lg justify-between p-5 shadow-elevate  mb-5 items-center ">
-      <Link to="/Cart">
-        <button className="relative flex flex-col justify-center items-center w-10 h-10">
-          <div className=" size-5 sm:size-9">
-            <img src="src/assets/carticon-white.png"></img>
-          </div>
-          <CardItemCount></CardItemCount>
-        </button>
-      </Link>
+      <div className="flex flex-row space-x-4">
+        <Link to="/Cart">
+          <button className="relative flex flex-col justify-center items-center w-10 h-10">
+            <div className=" size-5 sm:size-9">
+              <img src="src/assets/carticon-white.png"></img>
+            </div>
+            <CardItemCount></CardItemCount>
+          </button>
+        </Link>
+        <Link to="/Wishlist">
+          <button className="relative flex flex-col justify-center items-center w-10 h-10">
+            <div className=" size-5 sm:size-9 text-white items-center flex justify-center text-2xl">
+              ❤️
+            </div>
+          </button>
+        </Link>
+      </div>
       <h1 className="text-lg sm:text-3xl  flex flex-row font-bold justify-center items-center text-white ml-9">
         Florify
         <img

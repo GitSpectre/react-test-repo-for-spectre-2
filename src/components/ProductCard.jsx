@@ -1,5 +1,6 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import { addToWishlist, removeFromWishlist } from "../actions";
 
 function ProductCard({
   id,
@@ -9,6 +10,9 @@ function ProductCard({
   image,
   rating,
   addProductToCart,
+  wishlist,
+  addToWishlist,
+  removeFromWishlist
 }) {
   let Goldstars = rating;
   let greyStars = 5 - Goldstars;
@@ -17,8 +21,25 @@ function ProductCard({
     ...Array(greyStars).fill("grey"),
   ];
 
+  const inWishlist = wishlist.some((item) => item.id === id);
+
+  const toggleWishlist = () => {
+    if (inWishlist) {
+      removeFromWishlist(id);
+    } else {
+      addToWishlist({ id, name, categories, price, image, rating });
+    }
+  };
+
   return (
-    <div className=" h-52 w-28 sm:h-96 sm:w-64  text-black flex flex-col justify-between mt-2 mb-2 sm:mt-4 hover:scale-105 transition-transform duration-300 sm:mb-4">
+    <div className="relative h-52 w-28 sm:h-96 sm:w-64 text-black flex flex-col justify-between mt-2 mb-2 sm:mt-4 hover:scale-105 transition-transform duration-300 sm:mb-4">
+      <button 
+        onClick={toggleWishlist}
+        className="absolute top-2 right-2 z-10 p-1 bg-white rounded-full bg-opacity-70 hover:bg-opacity-100 transition-all text-xl"
+        title={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+      >
+        {inWishlist ? "❤️" : "🤍"}
+      </button>
       <div className=" bg-card p-3 rounded-md shadow-elevate h-40 w-28 sm:h-80 sm:w-64 flex flex-col">
         <img className="rounded-md h-2/3 w-full" src={image} alt="" />
         <div className="flex flex-col justify-between w-full h-full">
@@ -59,4 +80,13 @@ function ProductCard({
   );
 }
 
-export default ProductCard;
+const mapStateToProps = (state) => ({
+  wishlist: state.wishlist ? state.wishlist.wishlist : [],
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addToWishlist: (prod) => dispatch(addToWishlist(prod)),
+  removeFromWishlist: (id) => dispatch(removeFromWishlist(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

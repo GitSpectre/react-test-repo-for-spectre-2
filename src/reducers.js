@@ -140,10 +140,31 @@ const productReducer = (state = { products: [], error: null }, action) => {
       break;
   }
 };
+
+const wishlistReducer = (state = { wishlist: [], error: null }, action) => {
+  switch (action.type) {
+    case "ADD_TO_WISHLIST":
+      const existingProduct = state.wishlist.find((element) => action.payload.id === element.id);
+      if (existingProduct) {
+        return state;
+      }
+      return {
+        wishlist: [...state.wishlist, action.payload],
+      };
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        wishlist: state.wishlist.filter((element) => element.id !== action.payload),
+      };
+    default:
+      return state;
+  }
+};
+
 const rootreducer = combineReducers({
   cart: cartReducer,
   user: userReducer,
   products: productReducer,
+  wishlist: wishlistReducer,
 });
 
 export default rootreducer;

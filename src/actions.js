@@ -188,6 +188,21 @@ export const logoutAndClear = () => {
   };
 };
 
+// wishlist actions
+export const addToWishlist = (prod) => {
+  return {
+    type: "ADD_TO_WISHLIST",
+    payload: prod,
+  };
+};
+
+export const removeFromWishlist = (id) => {
+  return {
+    type: "REMOVE_FROM_WISHLIST",
+    payload: id,
+  };
+};
+
 // export function asyncAddtocart(prod) {
 //   return async (dispatch) => {
 //     (dispatch) => {
